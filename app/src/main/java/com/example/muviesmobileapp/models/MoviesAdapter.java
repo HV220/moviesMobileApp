@@ -2,6 +2,7 @@ package com.example.muviesmobileapp.models;
 
 import android.annotation.SuppressLint;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,12 +21,17 @@ import java.util.List;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewHolder> {
     private List<Movie> movies = new ArrayList<>();
+    private onReachEndListener reachEndListener;
+
+    public void setOnClickListener(MoviesAdapter.onMovieListener onMovieListener) {
+        this.onMovieListener = onMovieListener;
+    }
+
+    private onMovieListener onMovieListener;
 
     public void setOnReachEndListener(MoviesAdapter.onReachEndListener onReachEndListener) {
         this.reachEndListener = onReachEndListener;
     }
-
-    private onReachEndListener reachEndListener;
 
     @NonNull
     @Override
@@ -59,6 +65,14 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
         if (position == movies.size() - 10 && reachEndListener != null) {
             reachEndListener.onReachEnd();
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onMovieListener != null) {
+                    onMovieListener.onClick(movie);
+                }
+            }
+        });
     }
 
     @Override
@@ -73,6 +87,10 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
 
     public interface onReachEndListener {
         void onReachEnd();
+    }
+
+    public interface onMovieListener {
+        void onClick(Movie movie);
     }
 
     static class MovieViewHolder extends RecyclerView.ViewHolder {

@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -46,6 +47,13 @@ public class MainActivity extends AppCompatActivity {
         mainViewModel.getBooleanMutableLiveData().observe(this, isLoading -> {
             if (isLoading) progressBar.setVisibility(View.VISIBLE);
             else progressBar.setVisibility(View.GONE);
+        });
+        moviesAdapter.setOnClickListener(new MoviesAdapter.onMovieListener() {
+            @Override
+            public void onClick(Movie movie) {
+                Intent detailedMovieView = AboutMovieView.createIntent(MainActivity.this, movie);
+                startActivity(detailedMovieView);
+            }
         });
     }
 

@@ -15,6 +15,9 @@
         android:theme="@style/Theme.MuviesMobileApp"
         tools:targetApi="31">
         <activity
+            android:name=".AboutMovieView"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

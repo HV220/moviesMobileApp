@@ -2,7 +2,9 @@ package com.example.muviesmobileapp.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Rating {
+import java.io.Serializable;
+
+public class Rating implements Serializable {
 
     @Override
     public String toString() {
@@ -18,6 +20,7 @@ public class Rating {
     public double getRating() {
         return rating;
     }
-@SerializedName("kp")
+
+    @SerializedName("kp")
     private double rating;
 }
