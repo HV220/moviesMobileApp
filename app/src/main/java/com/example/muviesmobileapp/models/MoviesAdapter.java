@@ -45,6 +45,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
         Movie movie = movies.get(position);
+
         Glide.with(holder.itemView)
                 .load(movie.getPoster().getPreviewUrl())
                 .into(holder.imageViewHolder);
@@ -65,12 +66,9 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
         if (position == movies.size() - 10 && reachEndListener != null) {
             reachEndListener.onReachEnd();
         }
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onMovieListener != null) {
-                    onMovieListener.onClick(movie);
-                }
+        holder.itemView.setOnClickListener(v -> {
+            if (onMovieListener != null) {
+                onMovieListener.onClick(movie);
             }
         });
     }

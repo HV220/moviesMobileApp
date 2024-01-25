@@ -1,27 +1,18 @@
-package com.example.muviesmobileapp;
+package com.example.muviesmobileapp.views;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.example.muviesmobileapp.models.ApiFactory;
-import com.example.muviesmobileapp.models.Movie;
+import com.example.muviesmobileapp.R;
 import com.example.muviesmobileapp.models.MoviesAdapter;
-import com.example.muviesmobileapp.viewmodel.MainViewModel;
-
-import java.util.List;
-
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.schedulers.Schedulers;
+import com.example.muviesmobileapp.viewmodels.MainViewModel;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -42,18 +33,19 @@ public class MainActivity extends AppCompatActivity {
 
         mainViewModel.getMovieResponseLiveData().observe(this,
                 movies -> moviesAdapter.setMovies(movies));
-        moviesAdapter.setOnReachEndListener(() -> mainViewModel.loadMovies());
 
-        mainViewModel.getBooleanMutableLiveData().observe(this, isLoading -> {
+        moviesAdapter.setOnReachEndListener(() -> {
+            mainViewModel.loadMovies();
+        });
+
+        mainViewModel.getIsLoadingMovies().observe(this, isLoading -> {
             if (isLoading) progressBar.setVisibility(View.VISIBLE);
             else progressBar.setVisibility(View.GONE);
         });
-        moviesAdapter.setOnClickListener(new MoviesAdapter.onMovieListener() {
-            @Override
-            public void onClick(Movie movie) {
-                Intent detailedMovieView = AboutMovieView.createIntent(MainActivity.this, movie);
-                startActivity(detailedMovieView);
-            }
+
+        moviesAdapter.setOnClickListener((movie) -> {
+            Intent detailedMovieView = AboutMovieActivity.createIntent(MainActivity.this, movie);
+            startActivity(detailedMovieView);
         });
     }
 
