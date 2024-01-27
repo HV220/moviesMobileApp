@@ -1,4 +1,4 @@
-package com.example.muviesmobileapp.models;
+package com.example.muviesmobileapp.models.api.responses.movies;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -19,7 +19,14 @@ public class Poster implements Serializable {
                 '}';
     }
 
+    public Poster() {
+    }
+
     public Poster(String url) {
         this.previewUrl = url;
+    }
+
+    public void setPreviewUrl(String previewUrl) {
+        this.previewUrl = previewUrl;
     }
 }

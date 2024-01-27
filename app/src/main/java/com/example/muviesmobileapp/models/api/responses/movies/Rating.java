@@ -1,4 +1,4 @@
-package com.example.muviesmobileapp.models;
+package com.example.muviesmobileapp.models.api.responses.movies;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -23,4 +23,8 @@ public class Rating implements Serializable {
 
     @SerializedName("kp")
     private double rating;
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
 }

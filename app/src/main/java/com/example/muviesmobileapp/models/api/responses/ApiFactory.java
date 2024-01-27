@@ -1,4 +1,4 @@
-package com.example.muviesmobileapp.models;
+package com.example.muviesmobileapp.models.api.responses;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;

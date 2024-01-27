@@ -1,4 +1,4 @@
-package com.example.muviesmobileapp.models;
+package com.example.muviesmobileapp.models.api.responses.aboutmovie.trailers;
 
 import com.google.gson.annotations.SerializedName;
 

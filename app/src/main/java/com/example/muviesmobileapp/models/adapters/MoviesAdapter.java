@@ -1,8 +1,7 @@
-package com.example.muviesmobileapp.models;
+package com.example.muviesmobileapp.models.adapters;
 
 import android.annotation.SuppressLint;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.muviesmobileapp.R;
+import com.example.muviesmobileapp.models.api.responses.movies.Movie;
 
 import java.util.ArrayList;
 import java.util.List;

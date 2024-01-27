@@ -1,17 +1,17 @@
-package com.example.muviesmobileapp.models;
+package com.example.muviesmobileapp.models.api.responses.aboutmovie.trailers;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 import java.util.List;
 
-public class TrailerMovieResponse implements Serializable {
+public class TrailerResponse implements Serializable {
     @SerializedName("docs")
     private List<Doc> trailersMovieList;
 
     @Override
     public String toString() {
-        return "TrailerMovieResponse{" +
+        return "TrailerResponse{" +
                 "trailersMovieList=" + trailersMovieList +
                 '}';
     }
@@ -20,7 +20,7 @@ public class TrailerMovieResponse implements Serializable {
         return trailersMovieList;
     }
 
-    public TrailerMovieResponse(List<Doc> trailersMovieList) {
+    public TrailerResponse(List<Doc> trailersMovieList) {
         this.trailersMovieList = trailersMovieList;
     }
 }

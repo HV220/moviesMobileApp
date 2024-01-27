@@ -7,8 +7,8 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.muviesmobileapp.models.ApiFactory;
-import com.example.muviesmobileapp.models.Movie;
+import com.example.muviesmobileapp.models.api.responses.ApiFactory;
+import com.example.muviesmobileapp.models.api.responses.movies.Movie;
 
 import java.util.List;
 

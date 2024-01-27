@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import com.example.muviesmobileapp.R;
-import com.example.muviesmobileapp.models.MoviesAdapter;
+import com.example.muviesmobileapp.models.adapters.MoviesAdapter;
 import com.example.muviesmobileapp.viewmodels.MainViewModel;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,7 +27,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent intent = FavoriteMovieActivity.createIntent(MainActivity.this);
+        startActivity(intent);
+
         this.init();
+
 
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
