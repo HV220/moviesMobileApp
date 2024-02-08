@@ -48,3 +48,8 @@ This project is distributed under the MIT License. See the [LICENSE](LICENSE) fi
 For the GitHub repository description:
 
 Browse current films, add movies to favorites for offline access, watch trailers, and read comments using the Kinopoisk API.
+
+
+
+https://github.com/HV220/moviesMobileApp/assets/96989018/6705d9b8-46ca-4b79-ac77-636c3ead74ff
+
