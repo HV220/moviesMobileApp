@@ -18,9 +18,9 @@ public class FavoriteMovieActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favorite_movie);
+        setContentView(R.layout.activity_favourite_movies);
 
-        RecyclerView recyclerView = findViewById(R.id.recycler_favorite);
+        RecyclerView recyclerView = findViewById(R.id.recyclerViewMovies);
         MoviesAdapter moviesAdapter = new MoviesAdapter();
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setAdapter(moviesAdapter);
@@ -28,7 +28,7 @@ public class FavoriteMovieActivity extends AppCompatActivity {
         FavoriteMovieViewModel model = new ViewModelProvider(this)
                 .get(FavoriteMovieViewModel.class);
 
-        model.getAllMoviesDb().observe(this, movies -> moviesAdapter.setMovies(movies));
+        model.getAllMoviesDb().observe(this, moviesAdapter::setMovies);
 
         moviesAdapter.setOnClickListener((movie) -> {
             Intent detailedMovieView = AboutMovieActivity.createIntent(FavoriteMovieActivity.this, movie);
